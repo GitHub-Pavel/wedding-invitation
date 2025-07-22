@@ -18,14 +18,12 @@ export const useHomeInitial = () => {
 
   const handlePageScroll = useCallback(() => {
     if (typeof window === undefined) return;
-    if (window.scrollY <= 100 && hasDarkHeader) {
+    if (window.scrollY <= 100) {
       setHasDarkHeader(false);
       return;
     }
-    if (!hasDarkHeader) {
-      setHasDarkHeader(true);
-    }
-  }, [hasDarkHeader]);
+    setHasDarkHeader(true);
+  }, []);
 
   useEffect(() => {
     window.addEventListener("scroll", handlePageScroll);
