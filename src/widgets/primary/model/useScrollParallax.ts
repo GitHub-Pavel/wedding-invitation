@@ -20,6 +20,10 @@ interface ScrollParallaxParams {
 const animOpts: AnimationOptions = {
   duration: 0.3,
   ease: "backOut",
+  opacity: {
+    duration: 0.1,
+    ease: "linear",
+  },
 };
 
 export const useScrollParallax = (
@@ -91,6 +95,10 @@ export const useScrollParallax = (
         {
           duration: 0.4,
           ease: "backOut",
+          opacity: {
+            duration: 0.1,
+            ease: "linear",
+          },
         }
       );
     }
@@ -110,10 +118,14 @@ export const useScrollParallax = (
         {
           duration: 0.5,
           ease: "backOut",
+          opacity: {
+            duration: 0.1,
+            ease: "linear",
+          },
         }
       );
     }
-  }, 20);
+  }, 25);
 
   const calculatePercentages = useCallback(() => {
     if (params.disable) return;
