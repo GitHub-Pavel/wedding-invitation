@@ -21,7 +21,7 @@ const animOpts: AnimationOptions = {
   duration: 0.3,
   ease: "backOut",
   opacity: {
-    duration: 0.01,
+    duration: 0,
     ease: "linear",
   },
 };
@@ -96,7 +96,7 @@ export const useScrollParallax = (
           duration: 0.4,
           ease: "backOut",
           opacity: {
-            duration: 0.01,
+            duration: 0,
             ease: "linear",
           },
         }
@@ -119,7 +119,7 @@ export const useScrollParallax = (
           duration: 0.5,
           ease: "backOut",
           opacity: {
-            duration: 0.01,
+            duration: 0,
             ease: "linear",
           },
         }
