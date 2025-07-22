@@ -125,7 +125,7 @@ export const useScrollParallax = (
         }
       );
     }
-  }, 25);
+  }, 30);
 
   const calculatePercentages = useCallback(() => {
     if (params.disable) return;
