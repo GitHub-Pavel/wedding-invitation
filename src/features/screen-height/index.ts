@@ -10,7 +10,6 @@ export const ScreenHeightProvider: FC<PropsWithChildren> = ({ children }) => {
     }
 
     adjustHeight();
-    window.addEventListener("resize", adjustHeight);
     window.addEventListener("orientationchange", adjustHeight);
   }, []);
   return children;
