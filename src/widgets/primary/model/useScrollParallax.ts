@@ -7,6 +7,7 @@ import {
   useAnimate,
 } from "motion/react";
 import { useThrottleCallback } from "@react-hook/throttle";
+import { cutPercentagesBefore } from "@/shared/utils/math";
 
 interface ScrollParallaxParams {
   disable?: boolean;
@@ -103,17 +104,15 @@ export const useScrollParallax = (
       );
     }
 
-    const delay = 30;
     if (params.scopes.images?.scope2?.current) {
-      const normalizePercentages =
-        Math.max(percentages - delay, 0) * (100 / (100 - delay));
+      const cuted = cutPercentagesBefore(percentages, 30);
       animate(
         params.scopes.images.scope2.current,
         {
-          x: normalizePercentages * 0.6,
-          y: normalizePercentages * 1.1,
-          rotate: 360 - normalizePercentages / 3,
-          opacity: 1 - normalizePercentages / 40,
+          x: cuted * 0.6,
+          y: cuted * 1.1,
+          rotate: 360 - cuted / 3,
+          opacity: 1 - cuted / 40,
         },
         {
           duration: 0.5,
@@ -128,10 +127,8 @@ export const useScrollParallax = (
   }, 30);
 
   const calculatePercentages = useCallback(() => {
-    if (params.disable) return;
-    const endpoint =
-      (parent.current?.offsetHeight || 0) + (parent.current?.offsetTop || 0);
-    const percentages = window.scrollY / (endpoint / 100);
+    if (params.disable || !parent.current) return;
+    const percentages = window.scrollY / (parent.current.offsetHeight / 100);
     if (percentages > 100 || percentages < 0) return;
     animateParallax(percentages);
   }, [animateParallax, params.disable, parent]);

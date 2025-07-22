@@ -4,14 +4,25 @@ import styles from "./styles.module.scss";
 import { Container } from "@/shared/ui/container";
 import { Color } from "@/shared/const/styles";
 import Image from "next/image";
+import { useH2Appearing } from "@/features/h2-appearing";
+import { useDateTime } from "../model/useDateTime";
 
 export const DateTime: FC = () => {
   const dateTime = useRef<HTMLDivElement>(null);
+  const { scope1, scope2 } = useDateTime(dateTime);
+  const { props } = useH2Appearing(dateTime, {
+    margin: "0px 0px -500px",
+  });
 
   return (
     <div ref={dateTime} className={styles.dateTime}>
-      <Container>
-        <Heading align={HeadingAlign.center} color={Color.white}>
+      <Container className={styles.container}>
+        <Heading
+          {...props}
+          color={Color.white}
+          align={HeadingAlign.center}
+          scopes={{ ...props.scopes, wrap: scope1 }}
+        >
           Дата и время
         </Heading>
       </Container>
@@ -23,6 +34,7 @@ export const DateTime: FC = () => {
         quality={100}
         width={1440}
         height={937}
+        ref={scope2}
         priority
       />
     </div>

@@ -9,7 +9,7 @@ import { HeadingVariant } from "@/shared/ui/heading/const";
 import { useBackground, useToDown } from "../../model";
 import { Background } from "../background";
 import { useLoading } from "@/entities/loading";
-import { useLettersAppearing } from "@/entities/letters-appearing";
+import { useLettersAppearing } from "@/features/letters-appearing";
 import { Images } from "../images";
 import { useImages } from "../../model/useImages";
 import { Container } from "@/shared/ui/container";
@@ -30,10 +30,10 @@ const _primary = memo<PrimaryProps>(({ onAppeared }) => {
   const primary = useRef<HTMLDivElement>(null);
   const { state: bgState, scopes: bgScopes } = useBackground(primary);
   const hasHadingAppearing = !bgState.isAppeared || !loaded;
-  const { RenderLetters, isAppeared: isHeadingAppeared } = useLettersAppearing(
-    primary,
-    { disable: hasHadingAppearing, center: true }
-  );
+  const { RenderLetters, isAppeared: isHeadingAppeared } = useLettersAppearing({
+    disable: hasHadingAppearing,
+    center: true,
+  });
   const { state: imgState, scopes: imgScopes } = useImages(
     primary,
     !isHeadingAppeared
@@ -102,5 +102,6 @@ const _primary = memo<PrimaryProps>(({ onAppeared }) => {
     </div>
   );
 });
+
 _primary.displayName = "Primary";
 export const Primary = _primary;

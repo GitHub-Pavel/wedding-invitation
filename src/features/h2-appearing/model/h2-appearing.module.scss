@@ -1,0 +1,11 @@
+.h2 {
+  :global(.heading__line) {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  :global(.heading__text) {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}

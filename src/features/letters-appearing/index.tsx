@@ -1,13 +1,5 @@
 import { useAnimate, useInView } from "motion/react";
-import {
-  FC,
-  RefObject,
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import { FC, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { receiveCentralityRank } from "@/shared/utils/array";
 import styles from "./letters-appearing.module.scss";
 import clsx from "clsx";
@@ -35,15 +27,16 @@ interface RenderLettersProps {
   value: string;
 }
 
-export const useLettersAppearing = <T extends HTMLElement>(
-  parent: RefObject<T | null>,
+export const useLettersAppearing = (
   options?: Partial<LettersAppearingOptions>
 ) => {
   const [isAppeared, setIsAppeared] = useState(false);
   const { delay, disable, speed, center } = { ...initOpts, ...options };
 
-  const inView = useInView(parent);
   const [scope, animate] = useAnimate<HTMLSpanElement>();
+  const inView = useInView(scope, {
+    margin: "0px 0px -300px",
+  });
 
   const [letters, setLetters] = useState<Array<HTMLSpanElement>>([]);
   const lettersRef = useRef<Array<HTMLSpanElement>>([]);
@@ -121,29 +114,49 @@ export const useLettersAppearing = <T extends HTMLElement>(
           <span
             key={letter + i}
             ref={handleLetter(value)}
-            className={clsx({
-              [styles.letter]: !isAppeared,
-            })}
+            className={clsx(styles.letter)}
           >
             {letter}
           </span>
         ))}
       </span>
     ),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     [handleLetter, scope]
   );
 
   useEffect(() => {
-    if (!inView || disable || isAppeared) return;
+    if (!inView || disable) {
+      if (isAppeared) {
+        letters.map((letter) =>
+          animate(letter, { opacity: 0 }, { duration: 0.4 })
+        );
+        setIsAppeared(false);
+      }
+      return;
+    }
+
+    if (isAppeared) {
+      return;
+    }
 
     letters.map(async (letter, i) => {
       await calculation[+!!center]?.(letter, i);
+      letter.classList.remove(styles.letter);
       if (i === letters.length - 1) {
         setIsAppeared(true);
       }
     });
-  }, [calculation, center, delay, disable, inView, isAppeared, letters, speed]);
+  }, [
+    animate,
+    calculation,
+    center,
+    delay,
+    disable,
+    inView,
+    isAppeared,
+    letters,
+    speed,
+  ]);
 
   useEffect(() => {
     if (!lettersRef.current.length) return;

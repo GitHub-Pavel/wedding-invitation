@@ -5,6 +5,8 @@ import { Container } from "@/shared/ui/container";
 import { useSectionRegistration } from "@/shared/sections";
 import styles from "./date.module.scss";
 import { Days, DaysProps } from "../days/days";
+import { useH2Appearing } from "@/features/h2-appearing";
+import { Color } from "@/shared/const/styles";
 
 const WEEKS: DaysProps[] = [
   {
@@ -40,6 +42,7 @@ const WEEKS: DaysProps[] = [
 
 export const Date: FC = () => {
   const date = useRef<HTMLDivElement>(null);
+  const { props } = useH2Appearing();
 
   useSectionRegistration({
     ref: date,
@@ -48,10 +51,12 @@ export const Date: FC = () => {
   });
 
   return (
-    <Section ref={date}>
+    <Section ref={date} color={Color.crema} className={styles.section}>
       <Container>
         <div className={styles.calendar}>
-          <Heading fullWidth>Сентябрь</Heading>
+          <Heading {...props} fullWidth>
+            Сентябрь
+          </Heading>
           <div className={styles.daysWrap}>
             {WEEKS.map((days) => (
               <Days key={`days-${days.label}`} {...days} />
