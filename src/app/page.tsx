@@ -1,4 +1,4 @@
-import { HomePage } from "@/pages/home";
+import { HomePage } from "@/routes/home";
 
 const Home = () => <HomePage />;
 export default Home;
