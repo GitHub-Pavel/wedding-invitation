@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond } from "next/font/google";
 import { Provider } from "jotai";
+import { Cormorant_Garamond } from "next/font/google";
+import { LoadingProvider } from "@/entities/loading";
+import { ScreenHeightProvider } from "@/features/screen-height";
 
 import "./globals.scss";
-import { LoadingProvider } from "@/entities/loading";
 
 const cg = Cormorant_Garamond({
   variable: "--font-cg",
@@ -32,7 +33,9 @@ export default function RootLayout({
     <html lang="ru">
       <body className={`${cg.variable} ${cgItalic.variable}`}>
         <Provider>
-          <LoadingProvider>{children}</LoadingProvider>
+          <ScreenHeightProvider>
+            <LoadingProvider>{children}</LoadingProvider>
+          </ScreenHeightProvider>
         </Provider>
       </body>
     </html>
