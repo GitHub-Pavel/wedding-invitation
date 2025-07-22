@@ -18,7 +18,7 @@ export const useHomeInitial = () => {
 
   const handlePageScroll = useCallback(() => {
     if (typeof window === undefined) return;
-    if (window.scrollY === 0 && hasDarkHeader) {
+    if (window.scrollY > 5 && hasDarkHeader) {
       setHasDarkHeader(false);
       return;
     }
