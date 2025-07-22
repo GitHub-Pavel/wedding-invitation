@@ -1,0 +1,56 @@
+:root {
+  // COLOR
+  --color-dark: #092216;
+  --color-main: #303f2c;
+  --color-light: #778478;
+  --color-crema: #e3d9b6;
+  --color-dirty: #d0c8b5;
+  --color-white: #dfffee;
+
+  // FONST SIZE
+  --font-size-desktop: 24px;
+  --font-size-tablet: 18px;
+
+  // ADDITIONAL
+  --media-query: 768px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  @include globals.useMedia("font-size");
+}
+
+body {
+  background: var(--color-crema);
+  font-family: var(--font-cg);
+  color: var(--color-main);
+  overflow-y: scroll;
+}
+
+.color {
+  @include globals.useColors("color");
+}
+
+.background {
+  @include globals.useColors("background-color");
+}
+
+.border {
+  @include globals.useColors("border-color");
+}
+
+button {
+  background: transparent;
+  border: none;
+  font-family: var(--font-cg);
+  cursor: pointer;
+}
+
+svg {
+  display: block;
+}

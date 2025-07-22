@@ -1,0 +1,68 @@
+.btn {
+  --xs-desktop: 0.75rem;
+  --xs-tablet: 0.88rem;
+
+  --lg-desktop: 1.08rem;
+  --lg-tablet: 1.11rem;
+
+  --lg-icon-desktop: 0.625rem;
+  --lg-icon-tablet: 0.66rem;
+
+  --xs-icon-desktop: 0.7rem;
+  --xs-icon-tablet: 0.88rem;
+
+  --lg-gap-desktop: 0.41rem;
+  --lg-gap-tablet: 0.44rem;
+
+  --xs-gap-desktop: 0.5rem;
+  --xs-gap-tablet: 0.55rem;
+
+  display: flex;
+  align-items: center;
+  transition: color 0.2s;
+
+  .icon {
+    fill: currentColor;
+
+    svg {
+      fill: currentColor;
+    }
+  }
+}
+
+.stroke {
+  .icon {
+    fill: transparent;
+    stroke: currentColor;
+    svg {
+      fill: transparent;
+      stroke: currentColor;
+    }
+  }
+}
+
+.icon {
+  display: block;
+}
+
+.top {
+  flex-direction: column;
+}
+
+.lg {
+  @include globals.useMedia("gap", "lg-gap");
+  @include globals.useMedia("font-size", "lg");
+
+  .icon {
+    @include globals.useMedia("width", "lg-icon");
+  }
+}
+
+.xs {
+  @include globals.useMedia("gap", "xs-gap");
+  @include globals.useMedia("font-size", "xs");
+
+  .icon {
+    @include globals.useMedia("width", "xs-icon");
+  }
+}

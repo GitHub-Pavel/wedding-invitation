@@ -1,0 +1,9 @@
+.section {
+  --padding-top-desktop: 100px;
+  --padding-top-tablet: 60px;
+  --padding-bottom-desktop: 140px;
+  --padding-bottom-tablet: 80px;
+
+  @include globals.useMedia("padding-top");
+  @include globals.useMedia("padding-bottom");
+}

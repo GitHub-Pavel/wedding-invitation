@@ -1,0 +1,47 @@
+.ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  padding-bottom: 6px;
+
+  --font-size-desktop: 0.75rem;
+  --font-size-tablet: 2rem;
+
+  --disable-color: var(--color-light);
+  --current-color: var(--color-main);
+}
+
+.btn {
+  transition: 0.2s;
+  position: relative;
+  color: var(--disable-color);
+  @include globals.useMedia("font-size");
+
+  &::after {
+    content: "";
+    bottom: -18px;
+    opacity: 0;
+    width: 74%;
+    height: 1px;
+    left: 50%;
+    translate: -50% 0;
+    background: currentColor;
+    transition: 0.2s;
+    position: absolute;
+  }
+
+  &:hover {
+    color: var(--current-color);
+  }
+
+  &:global(.current) {
+    color: var(--current-color);
+
+    &::after {
+      bottom: -11px;
+      opacity: 1;
+    }
+  }
+}

@@ -9,17 +9,24 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@react-hook/throttle": "^2.2.0",
+    "clsx": "^2.1.1",
+    "jotai": "^2.12.5",
+    "merge-refs": "^2.0.0",
+    "motion": "^12.23.0",
+    "next": "15.3.5",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "next": "15.3.5"
+    "sass": "^1.89.2",
+    "use-callback-ref": "^1.3.3"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@eslint/eslintrc": "^3",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.3.5",
-    "@eslint/eslintrc": "^3"
+    "typescript": "^5"
   }
 }

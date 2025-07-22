@@ -1,0 +1,66 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9;
+  width: 100%;
+  padding: 20px 0;
+  background-color: transparent;
+  transition: background-color 0.3s, padding 0.2s 0.2s, opacity 0.2s, top 0.2s;
+
+  &:not(.advanced) {
+    padding: 6px 0;
+    backdrop-filter: blur(4px);
+    background-color: rgba(9, 34, 22, 0.8);
+    transition: 0.2s;
+
+    :global(.logotype) {
+      width: 25px;
+      color: var(--color-white);
+      transition: width 0.1s 0.2s, color 0.2s;
+
+      &:hover {
+        color: var(--color-crema);
+      }
+    }
+
+    :global(.chat-for-guests) {
+      color: var(--color-white);
+
+      &:hover {
+        color: var(--color-crema);
+      }
+    }
+
+    :global(.main-menu) {
+      --disable-color: var(--color-white);
+      --current-color: var(--color-crema);
+
+      :global(.current)::after {
+        bottom: -8px;
+      }
+    }
+  }
+}
+
+.hidden {
+  top: -20px;
+  opacity: 0;
+}
+
+.grid {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 2fr 8fr 2fr;
+}
+
+.chatForGuests {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}

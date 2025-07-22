@@ -1,0 +1,10 @@
+.logo {
+  color: var(--color-main);
+  transition: 0.3s 0.2s;
+  width: 40px;
+
+  svg {
+    fill: currentColor;
+    width: 100%;
+  }
+}

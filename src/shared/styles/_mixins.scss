@@ -1,0 +1,30 @@
+@mixin useMedia($property, $varName: $property) {
+  & {
+    #{$property}: var(--#{$varName}-desktop);
+  }
+
+  @media screen and (max-width: var(--media-query)) {
+    #{$property}: var(--#{$varName}-tablet);
+  }
+}
+
+@mixin useColors($property) {
+  &-dark {
+    #{$property}: var(--color-dark);
+  }
+  &-main {
+    #{$property}: var(--color-main);
+  }
+  &-light {
+    #{$property}: var(--color-light);
+  }
+  &-crema {
+    #{$property}: var(--color-crema);
+  }
+  &-dirty {
+    #{$property}: var(--color-dirty);
+  }
+  &-white {
+    #{$property}: var(--color-white);
+  }
+}

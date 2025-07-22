@@ -1,0 +1,62 @@
+.h1 {
+  --font-size-desktop: 2.66rem;
+  --font-size-tablet: 2.4rem;
+}
+
+.h2 {
+  --font-size-desktop: 4rem;
+  --font-size-tablet: 3.11rem;
+
+  --line-gap-desktop: 30px;
+  --line-gap-tablet: 15px;
+}
+
+.h3 {
+  --font-size-desktop: 2rem;
+  --font-size-tablet: 1.8rem;
+}
+
+.h4 {
+  --font-size-desktop: 1.25rem;
+  --font-size-tablet: 1.33rem;
+}
+
+.wrap {
+  flex-direction: column;
+  display: inline-flex;
+}
+
+.center {
+  align-items: center;
+  text-align: center;
+
+  .wrap {
+    align-items: center;
+  }
+}
+
+.heading {
+  font-weight: 400;
+  font-family: var(--font-cg);
+  @include globals.useMedia("font-size");
+}
+
+.italic {
+  font-style: italic;
+}
+
+.fullWidth {
+  width: 100%;
+
+  .line {
+    width: 100%;
+  }
+}
+
+.line {
+  height: 1px;
+  width: attr(data-size px, 80%);
+  background-color: currentColor;
+
+  @include globals.useMedia("margin-top", "line-gap");
+}
