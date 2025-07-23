@@ -61,7 +61,7 @@ export const useH2Appearing = (
 ): H2AppearingReturn => {
   const heading = useRef<HTMLDivElement>(null);
   const isInView = useInView(parent ?? heading, {
-    margin: (params?.margin as never) ?? "-240px 0px -200px",
+    margin: (params?.margin as never) ?? "-160px 0px -260px",
   });
   const [scope1, animate1] = useAnimate();
   const [scope2, animate2] = useAnimate();
@@ -74,8 +74,8 @@ export const useH2Appearing = (
   }, [animate1, animate2, scope1, scope2]);
 
   const disappearingHeading = useCallback(async () => {
-    animate1(scope1.current, ...disappearParams(-10));
-    await animate2(scope2.current, ...disappearParams(15));
+    animate1(scope1.current, ...disappearParams(-20));
+    await animate2(scope2.current, ...disappearParams(20));
     setIsAppeared(false);
   }, [animate1, animate2, scope1, scope2]);
 
