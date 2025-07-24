@@ -33,7 +33,7 @@ export const useScrollParallax = (
 ) => {
   const [scope, animate] = useAnimate<HTMLDivElement>();
   const animateParallax = useThrottleCallback((percentages: number) => {
-    const receiveParams = (coef = 1.1): DOMKeyframesDefinition => ({
+    const receiveParams = (coef = 1.2): DOMKeyframesDefinition => ({
       y: percentages * (coef * 3) * -1,
     });
     if (params.scopes.background?.scope1?.current) {
