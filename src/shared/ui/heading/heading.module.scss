@@ -54,8 +54,8 @@
 }
 
 .line {
+  width: 70%;
   height: 1px;
-  width: attr(data-size px, 70%);
   background-color: currentColor;
 
   @include globals.useMedia("margin-top", "line-gap");

@@ -54,7 +54,9 @@ export const Date: FC = () => {
     <Section ref={date} color={Color.crema} className={styles.section}>
       <Container>
         <div className={styles.calendar}>
-          <Heading {...props}>Сентябрь</Heading>
+          <Heading {...props} fullWidth>
+            Сентябрь
+          </Heading>
           <div className={styles.daysWrap}>
             {WEEKS.map((days) => (
               <Days key={`days-${days.label}`} {...days} />

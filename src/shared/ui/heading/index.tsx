@@ -1,6 +1,13 @@
 import clsx from "clsx";
 import { PropsWithClassname, PropsWithScopes } from "@/shared/types";
-import { FC, forwardRef, JSX, PropsWithChildren, RefAttributes } from "react";
+import {
+  FC,
+  forwardRef,
+  HTMLAttributes,
+  JSX,
+  PropsWithChildren,
+  RefAttributes,
+} from "react";
 import { HeadingAlign, HeadingVariant } from "./const";
 import { Color } from "@/shared/const/styles";
 import styles from "./heading.module.scss";
@@ -50,6 +57,9 @@ export const _heading = forwardRef<HTMLDivElement, HeadingProps>(
       }
     );
     const TagName = tagName as unknown as Element;
+    const lineStyles: HTMLAttributes<HTMLDivElement> = lineSize
+      ? { style: { width: lineSize } }
+      : {};
 
     return (
       <div className={styles[align]} ref={ref}>
@@ -64,8 +74,8 @@ export const _heading = forwardRef<HTMLDivElement, HeadingProps>(
           </TagName>
           {variant === HeadingVariant.h2 && (
             <div
+              {...lineStyles}
               ref={scopes?.line}
-              data-size={lineSize}
               className={clsx(styles.line, "heading__line")}
             />
           )}
