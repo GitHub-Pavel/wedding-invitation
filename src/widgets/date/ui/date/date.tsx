@@ -7,6 +7,8 @@ import styles from "./date.module.scss";
 import { Days, DaysProps } from "../days/days";
 import { useH2Appearing } from "@/features/h2-appearing";
 import { Color } from "@/shared/const/styles";
+import { Border } from "../border";
+import { useBorder } from "../../model";
 
 const WEEKS: DaysProps[] = [
   {
@@ -41,8 +43,9 @@ const WEEKS: DaysProps[] = [
 ];
 
 export const Date: FC = () => {
-  const date = useRef<HTMLDivElement>(null);
+  const date = useRef(null);
   const { props } = useH2Appearing();
+  const { scopes } = useBorder(date);
 
   useSectionRegistration({
     ref: date,
@@ -62,6 +65,7 @@ export const Date: FC = () => {
               <Days key={`days-${days.label}`} {...days} />
             ))}
           </div>
+          <Border scopes={scopes} />
         </div>
       </Container>
     </Section>

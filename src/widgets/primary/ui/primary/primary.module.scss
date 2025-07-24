@@ -36,7 +36,11 @@
     height: 100%;
     position: absolute;
     z-index: -1;
-    background: var(--color-dark);
+    background: linear-gradient(
+      0deg,
+      var(--color-dark) 50%,
+      var(--color-crema) 51%
+    );
   }
 }
 
