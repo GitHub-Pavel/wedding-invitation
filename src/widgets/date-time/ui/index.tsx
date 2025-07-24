@@ -1,11 +1,12 @@
-import { FC, useRef } from "react";
-import { Heading, HeadingAlign } from "@/shared/ui/heading";
-import styles from "./styles.module.scss";
-import { Container } from "@/shared/ui/container";
-import { Color } from "@/shared/const/styles";
+import clsx from "clsx";
 import Image from "next/image";
+import { FC, useRef } from "react";
+import { Heading, HeadingAlign, HeadingScopes } from "@/shared/ui/heading";
+import { Color } from "@/shared/const/styles";
+import { Container } from "@/shared/ui/container";
 import { useH2Appearing } from "@/features/h2-appearing";
 import { useDateTime } from "../model/useDateTime";
+import styles from "./styles.module.scss";
 
 export const DateTime: FC = () => {
   const dateTime = useRef<HTMLDivElement>(null);
@@ -13,17 +14,19 @@ export const DateTime: FC = () => {
   const { props } = useH2Appearing(dateTime, {
     margin: "0px 0px -500px",
   });
+  const scopes: HeadingScopes = { ...props.scopes, wrap: scope1 };
 
   return (
     <div ref={dateTime} className={styles.dateTime}>
       <Container className={styles.container}>
         <Heading
-          {...props}
+          ref={props.ref}
+          scopes={scopes}
           color={Color.white}
           align={HeadingAlign.center}
-          scopes={{ ...props.scopes, wrap: scope1 }}
+          className={clsx(props.className)}
         >
-          Дата и время
+          Этой Осенью
         </Heading>
       </Container>
 
