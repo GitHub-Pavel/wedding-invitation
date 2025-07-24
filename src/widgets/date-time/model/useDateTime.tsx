@@ -16,7 +16,7 @@ export const useDateTime = (parent: RefObject<HTMLElement | null>) => {
           percentages === 100
             ? 0
             : Math.max(
-                Math.min(cutPercentagesBefore(percentages, 25) / 10, 1),
+                Math.min(cutPercentagesBefore(percentages, 20) / 10, 1),
                 0
               ),
       },
