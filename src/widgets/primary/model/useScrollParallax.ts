@@ -69,7 +69,7 @@ export const useScrollParallax = (
         params.scopes.toDown.icon.current,
         {
           y: percentages * 0.2 * -1,
-          opacity: 1 - percentages / 40,
+          opacity: 1 - percentages / 30,
         },
         animOpts
       );
@@ -79,7 +79,7 @@ export const useScrollParallax = (
         params.scopes.toDown.text.current,
         {
           y: percentages * 0.4,
-          opacity: 1 - percentages / 50,
+          opacity: 1 - percentages / 40,
         },
         animOpts
       );
@@ -112,7 +112,7 @@ export const useScrollParallax = (
           x: cuted * 0.6,
           y: cuted * 1.1,
           rotate: 360 - cuted / 3,
-          opacity: 1 - cuted / 40,
+          opacity: 1 - cuted / 30,
         },
         {
           duration: 0.5,
