@@ -50,7 +50,7 @@ export const useBorder = (
   const [scope5, animate5] = useAnimate();
   const [scope6, animate6] = useAnimate();
   const isInView = useInView(wrap, {
-    margin: "-400px 0px -400px",
+    margin: `-30% 0px -50%`,
   });
   const percentages = useRef(0);
 
