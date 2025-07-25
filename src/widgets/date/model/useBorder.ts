@@ -3,7 +3,6 @@
 import { AnimationScope } from "motion";
 import { RefObject, useMemo, useRef } from "react";
 import { PropsWithScopes } from "@/shared/types";
-import { useThrottleCallback } from "@react-hook/throttle";
 import {
   AnimationOptions,
   useAnimate,
@@ -11,6 +10,7 @@ import {
   useInView,
 } from "motion/react";
 import { cutPercentagesAfter, cutPercentagesBefore } from "@/shared/utils/math";
+import { useThrottleCallback } from "@react-hook/throttle";
 
 export interface BorderScopes {
   scope1?: AnimationScope<HTMLDivElement>;
@@ -35,7 +35,7 @@ const animOpts: AnimationOptions = {
 
 const initParams: BorderParams = {
   fps: 240,
-  duration: 200,
+  duration: 1400,
 };
 
 export const useBorder = (
@@ -92,9 +92,9 @@ export const useBorder = (
     }
   }, opts.fps);
 
-  useAnimationFrame((time) => {
+  useAnimationFrame((_, delta) => {
     const axios = [-1, 1][+isInView];
-    const per = percentages.current + (time / (opts.duration * 100)) * axios;
+    const per = percentages.current + (delta / opts.duration) * 100 * axios;
     percentages.current = Math.max(Math.min(per, 100), 0);
     animateBorder();
   });
