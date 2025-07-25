@@ -93,9 +93,11 @@ export const useBorder = (
   }, opts.fps);
 
   useAnimationFrame((_, delta) => {
-    const axios = [-1, 1][+isInView];
-    const per = percentages.current + (delta / opts.duration) * 100 * axios;
-    percentages.current = Math.max(Math.min(per, 100), 0);
+    const axios = [-2, 1][+isInView];
+    const calcPer = percentages.current + (delta / opts.duration) * 100 * axios;
+    const per = Math.max(Math.min(calcPer, 100), 0);
+    if (per === percentages.current) return;
+    percentages.current = per;
     animateBorder();
   });
 
