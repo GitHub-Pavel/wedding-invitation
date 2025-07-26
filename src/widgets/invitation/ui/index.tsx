@@ -6,6 +6,7 @@ import { useH2Appearing } from "@/features/h2-appearing";
 import { useLettersAppearing } from "@/features/letters-appearing";
 import styles from "./styles.module.scss";
 import clsx from "clsx";
+import { useSectionRegistration } from "@/shared/sections";
 
 export const Invitation: FC = () => {
   const parent = useRef(null);
@@ -37,6 +38,13 @@ export const Invitation: FC = () => {
     view: P4.isAppeared,
     center: true,
   });
+
+  useSectionRegistration({
+    id: "inv",
+    label: "Пожелание",
+    ref: parent,
+  });
+
   return (
     <Section className={styles.section} ref={parent}>
       <Container>
