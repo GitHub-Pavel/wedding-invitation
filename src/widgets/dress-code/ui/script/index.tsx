@@ -5,7 +5,7 @@ import { Heading, HeadingAlign, HeadingVariant } from "@/shared/ui/heading";
 import { useLettersAppearing } from "@/features/letters-appearing";
 import styles from "./styles.module.scss";
 
-const transition = { duration: 0.4, delay: 0.3 };
+const transition = { duration: 0.6, delay: 0.3 };
 
 export const Script: FC = () => {
   const { RenderLetters } = useLettersAppearing({ center: false });
