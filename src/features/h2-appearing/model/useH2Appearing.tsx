@@ -42,7 +42,7 @@ const appearParams: [DOMKeyframesDefinition, AnimationOptions] = [
     duration: 1,
     ease: "backOut",
     opacity: {
-      duration: 0.4,
+      duration: 0.6,
       ease: "backOut",
     },
   },
