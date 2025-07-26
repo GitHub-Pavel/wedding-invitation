@@ -32,7 +32,7 @@ export const Loader: FC = () => {
 
   return (
     <div className={styles.wrap} ref={scope}>
-      <div className={styles.loader} />
+      <div className="heart" />
     </div>
   );
 };

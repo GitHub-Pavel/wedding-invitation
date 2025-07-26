@@ -1,23 +1,9 @@
-.wrap,
-.days {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.wrap {
-  gap: 50px;
-}
-
-.days {
-  gap: 40px;
-}
-
 .day {
   position: relative;
 }
 
 .heart {
+  width: 60px;
   position: absolute;
   top: calc(50% + 9px);
   left: 50%;

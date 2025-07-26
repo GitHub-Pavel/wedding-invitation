@@ -1,0 +1,31 @@
+.heading {
+  --font-size-desktop: 3.7rem;
+  --font-size-tablet: 3.11rem;
+}
+
+.section {
+  & :global(.container) {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+.background {
+  position: absolute;
+  object-fit: cover;
+  opacity: 0.03;
+  width: 100vw;
+  top: 0%;
+  left: 50%;
+  animation: ah 25s ease-in-out infinite;
+}
+
+@keyframes ah {
+  from,
+  to {
+    translate: -50% -10%;
+  }
+  50% {
+    translate: -50% -30%;
+  }
+}

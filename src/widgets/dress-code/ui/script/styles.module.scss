@@ -1,0 +1,24 @@
+.wrap {
+  padding-top: 140px;
+}
+
+.top {
+  padding-bottom: 30px;
+  padding-left: 100px;
+  color: var(--color-dirty);
+  font-size: 30px;
+}
+
+.script {
+  --font-size-desktop: 2.4rem;
+  --font-size-tablet: 2rem;
+}
+
+.bot {
+  font-size: 30px;
+  padding-top: 60px;
+  text-align: end;
+  font-style: italic;
+  color: var(--color-dirty);
+  text-decoration: underline;
+}

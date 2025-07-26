@@ -3,10 +3,12 @@ import { FC, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { receiveCentralityRank } from "@/shared/utils/array";
 import styles from "./letters-appearing.module.scss";
 import clsx from "clsx";
+import { PropsWithClassname } from "@/shared/types";
 
 interface LettersAppearingOptions {
   disable: boolean;
   center?: boolean;
+  view?: boolean;
   speed: number;
   delay: number;
 }
@@ -23,7 +25,7 @@ type LineInfo = {
   letters: number[];
 };
 
-interface RenderLettersProps {
+interface RenderLettersProps extends PropsWithClassname {
   value: string;
 }
 
@@ -31,11 +33,11 @@ export const useLettersAppearing = (
   options?: Partial<LettersAppearingOptions>
 ) => {
   const [isAppeared, setIsAppeared] = useState(false);
-  const { delay, disable, speed, center } = { ...initOpts, ...options };
+  const { delay, disable, speed, center, view } = { ...initOpts, ...options };
 
   const [scope, animate] = useAnimate<HTMLSpanElement>();
   const inView = useInView(scope, {
-    margin: "0px 0px -300px",
+    margin: "0px 0px -10%",
   });
 
   const [letters, setLetters] = useState<Array<HTMLSpanElement>>([]);
@@ -108,8 +110,8 @@ export const useLettersAppearing = (
   );
 
   const RenderLetters: FC<RenderLettersProps> = useCallback(
-    ({ value }) => (
-      <span ref={scope}>
+    ({ value, className }) => (
+      <span ref={scope} className={className}>
         {value.split("").map((letter, i) => (
           <span
             key={letter + i}
@@ -124,21 +126,7 @@ export const useLettersAppearing = (
     [handleLetter, scope]
   );
 
-  useEffect(() => {
-    if (!inView || disable) {
-      if (isAppeared) {
-        letters.map((letter) =>
-          animate(letter, { opacity: 0 }, { duration: 0.4 })
-        );
-        setIsAppeared(false);
-      }
-      return;
-    }
-
-    if (isAppeared) {
-      return;
-    }
-
+  const active = useCallback(() => {
     letters.map(async (letter, i) => {
       await calculation[+!!center]?.(letter, i);
       letter.classList.remove(styles.letter);
@@ -146,17 +134,33 @@ export const useLettersAppearing = (
         setIsAppeared(true);
       }
     });
-  }, [
-    animate,
-    calculation,
-    center,
-    delay,
-    disable,
-    inView,
-    isAppeared,
-    letters,
-    speed,
-  ]);
+  }, [calculation, center, letters]);
+
+  const diactivate = useCallback(() => {
+    letters.map((letter) => animate(letter, { opacity: 0 }, { duration: 0.4 }));
+    setIsAppeared(false);
+  }, [animate, letters]);
+
+  useEffect(() => {
+    if (view === true) {
+      return;
+    }
+
+    if (!inView || disable) {
+      if (isAppeared) diactivate();
+      return;
+    }
+
+    if (!isAppeared) active();
+  }, [active, diactivate, disable, inView, isAppeared, view]);
+
+  useEffect(() => {
+    if (view) {
+      active();
+      return;
+    }
+    if (view === false) diactivate();
+  }, [active, diactivate, view]);
 
   useEffect(() => {
     if (!lettersRef.current.length) return;

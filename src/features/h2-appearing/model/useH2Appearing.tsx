@@ -26,9 +26,11 @@ interface H2AppearingReturn {
   };
 }
 
+type Type = "px" | "%";
+
 interface H2AppearingParams {
   disable?: boolean;
-  margin?: `${string}px ${string}px ${string}px`;
+  margin?: `${string}${Type} ${string}${Type} ${string}${Type}`;
 }
 
 const appearParams: [DOMKeyframesDefinition, AnimationOptions] = [
@@ -37,8 +39,12 @@ const appearParams: [DOMKeyframesDefinition, AnimationOptions] = [
     opacity: 1,
   },
   {
-    duration: 0.6,
+    duration: 1,
     ease: "backOut",
+    opacity: {
+      duration: 0.4,
+      ease: "backOut",
+    },
   },
 ];
 
@@ -69,14 +75,14 @@ export const useH2Appearing = (
 
   const appearingHeading = useCallback(async () => {
     animate1(scope1.current, ...appearParams);
-    await animate2(scope2.current, ...appearParams);
-    setIsAppeared(true);
+    animate2(scope2.current, ...appearParams);
+    setTimeout(() => setIsAppeared(true), 500);
   }, [animate1, animate2, scope1, scope2]);
 
   const disappearingHeading = useCallback(async () => {
     animate1(scope1.current, ...disappearParams(-20));
-    await animate2(scope2.current, ...disappearParams(20));
-    setIsAppeared(false);
+    animate2(scope2.current, ...disappearParams(20));
+    setTimeout(() => setIsAppeared(false), 500);
   }, [animate1, animate2, scope1, scope2]);
 
   useEffect(() => {

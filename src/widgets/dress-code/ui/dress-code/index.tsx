@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { FC, useRef } from "react";
 import { Color } from "@/shared/const/styles";
 import { Section } from "@/shared/ui/section";
@@ -5,20 +6,20 @@ import { Container } from "@/shared/ui/container";
 import { useSectionRegistration } from "@/shared/sections";
 import { Heading, HeadingVariant } from "@/shared/ui/heading";
 import { useLettersAppearing } from "@/features/letters-appearing";
+import { useH2Appearing } from "@/features/h2-appearing";
 import { Hearts } from "../hearts";
 import styles from "./styles.module.scss";
-import { useH2Appearing } from "@/features/h2-appearing";
+import { Script } from "../script";
 
 const sectionId = "dress-code";
 const sectionLabel = "Дресс-код";
 
 export const DressCode: FC = () => {
   const dressCode = useRef<HTMLDivElement>(null);
-  const { state, props } = useH2Appearing();
+  const { props } = useH2Appearing();
   const { RenderLetters } = useLettersAppearing({
     speed: 0.9,
     center: true,
-    disable: !state.isAppeared,
   });
 
   useSectionRegistration({
@@ -43,7 +44,18 @@ export const DressCode: FC = () => {
         </Heading>
 
         <Hearts />
+
+        <Script />
       </Container>
+
+      <Image
+        alt="Зайдний фон секции дресс-код"
+        src="/dressCode/background.png"
+        className={styles.background}
+        quality={100}
+        height={2570}
+        width={1440}
+      />
     </Section>
   );
 };

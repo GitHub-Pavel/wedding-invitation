@@ -15,12 +15,20 @@ const DateTime = dynamic(
   () => import("@/widgets/date-time").then((module) => module.DateTime),
   { ssr: false }
 );
-const Date = dynamic(
-  () => import("@/widgets/date").then((module) => module.Date),
+const Calendar = dynamic(
+  () => import("@/widgets/calendar").then((module) => module.Calendar),
   { ssr: false }
 );
 const DressCode = dynamic(
   () => import("@/widgets/dress-code").then((module) => module.DressCode),
+  { ssr: false }
+);
+const Invitation = dynamic(
+  () => import("@/widgets/invitation").then((module) => module.Invitation),
+  { ssr: false }
+);
+const Footer = dynamic(
+  () => import("@/widgets/footer").then((module) => module.Footer),
   { ssr: false }
 );
 
@@ -37,8 +45,10 @@ export const HomePage: FC = () => {
       <Header variants={headerVariants} onLogoClick={handleLogoClick} />
       <Primary onAppeared={handlePrimaryAppeared} />
       <DateTime />
-      <Date />
+      <Calendar />
       <DressCode />
+      <Invitation />
+      <Footer />
     </div>
   );
 };

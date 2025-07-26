@@ -7,6 +7,10 @@ import { Container } from "@/shared/ui/container";
 import { useH2Appearing } from "@/features/h2-appearing";
 import { useDateTime } from "../model/useDateTime";
 import styles from "./styles.module.scss";
+import { useSectionRegistration } from "@/shared/sections";
+
+const sectionId = "dateTime";
+const sectionLabel = "Когда?";
 
 export const DateTime: FC = () => {
   const dateTime = useRef<HTMLDivElement>(null);
@@ -15,6 +19,12 @@ export const DateTime: FC = () => {
     margin: "0px 0px -500px",
   });
   const scopes: HeadingScopes = { ...props.scopes, wrap: scope1 };
+
+  useSectionRegistration({
+    id: sectionId,
+    label: sectionLabel,
+    ref: dateTime,
+  });
 
   return (
     <div ref={dateTime} className={styles.dateTime}>

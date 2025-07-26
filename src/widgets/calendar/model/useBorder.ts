@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimationScope } from "motion";
-import { RefObject, useMemo, useRef } from "react";
+import { RefObject, useEffect, useMemo, useRef } from "react";
 import { PropsWithScopes } from "@/shared/types";
 import {
   AnimationOptions,
@@ -50,7 +50,7 @@ export const useBorder = (
   const [scope5, animate5] = useAnimate();
   const [scope6, animate6] = useAnimate();
   const isInView = useInView(wrap, {
-    margin: `-30% 0px -50%`,
+    margin: `-10% 0px -60%`,
   });
   const percentages = useRef(0);
 
@@ -100,6 +100,11 @@ export const useBorder = (
     percentages.current = per;
     animateBorder();
   });
+
+  useEffect(() => {
+    if (isInView) return;
+    percentages.current = 50;
+  }, [isInView]);
 
   return useMemo(
     () => ({

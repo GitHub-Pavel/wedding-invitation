@@ -1,16 +1,18 @@
+"use client";
+
 import { FC, useRef } from "react";
 import { Heading } from "@/shared/ui/heading";
 import { Section } from "@/shared/ui/section";
 import { Container } from "@/shared/ui/container";
 import { useSectionRegistration } from "@/shared/sections";
-import styles from "./date.module.scss";
-import { Days, DaysProps } from "../days/days";
+import { Dates, DaysParams } from "../dates/dates";
 import { useH2Appearing } from "@/features/h2-appearing";
 import { Color } from "@/shared/const/styles";
-import { Border } from "../border";
 import { useBorder } from "../../model";
+import { Border } from "../border";
+import styles from "./calendar.module.scss";
 
-const WEEKS: DaysProps[] = [
+const WEEKS: DaysParams[] = [
   {
     days: [1, 8, 15, 22, 29],
     label: "Пн",
@@ -42,19 +44,19 @@ const WEEKS: DaysProps[] = [
   },
 ];
 
-export const Date: FC = () => {
-  const date = useRef(null);
+export const Calendar: FC = () => {
+  const calendar = useRef(null);
   const { props } = useH2Appearing();
-  const { scopes } = useBorder(date);
+  const { scopes } = useBorder(calendar);
 
   useSectionRegistration({
-    ref: date,
-    id: "date",
+    ref: calendar,
+    id: "calendar",
     label: "Дата",
   });
 
   return (
-    <Section ref={date} color={Color.crema} className={styles.section}>
+    <Section ref={calendar} color={Color.crema} className={styles.section}>
       <Container>
         <div className={styles.calendar}>
           <Heading {...props} fullWidth>
@@ -62,7 +64,7 @@ export const Date: FC = () => {
           </Heading>
           <div className={styles.daysWrap}>
             {WEEKS.map((days) => (
-              <Days key={`days-${days.label}`} {...days} />
+              <Dates key={`days-${days.label}`} parent={calendar} {...days} />
             ))}
           </div>
           <Border scopes={scopes} />

@@ -54,3 +54,34 @@ button {
 svg {
   display: block;
 }
+
+.heart {
+  & {
+    aspect-ratio: 1;
+    color: var(--color-main);
+    background: url("/dateTime/heart.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: inherit;
+    opacity: 0.4;
+    animation: l3 1s infinite 0.2s;
+  }
+
+  &--slower::after {
+    animation: l3 1.6s infinite;
+  }
+}
+
+@keyframes l3 {
+  to {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}

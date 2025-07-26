@@ -1,5 +1,4 @@
 import clsx from "clsx";
-import { PropsWithClassname, PropsWithScopes } from "@/shared/types";
 import {
   FC,
   forwardRef,
@@ -8,10 +7,11 @@ import {
   PropsWithChildren,
   RefAttributes,
 } from "react";
-import { HeadingAlign, HeadingVariant } from "./const";
 import { Color } from "@/shared/const/styles";
-import styles from "./heading.module.scss";
+import { PropsWithClassname, PropsWithScopes } from "@/shared/types";
+import { HeadingAlign, HeadingVariant } from "./const";
 import { HeadingScopes } from "./types";
+import styles from "./heading.module.scss";
 
 type Element = FC<
   PropsWithClassname<PropsWithChildren<RefAttributes<HTMLElement>>>

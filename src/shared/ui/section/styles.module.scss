@@ -4,6 +4,9 @@
   --padding-bottom-desktop: 140px;
   --padding-bottom-tablet: 80px;
 
+  position: relative;
+  overflow: hidden;
+
   @include globals.useMedia("padding-top");
   @include globals.useMedia("padding-bottom");
 }
