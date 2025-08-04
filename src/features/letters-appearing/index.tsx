@@ -77,11 +77,21 @@ export const useLettersAppearing = (
         );
       },
       async (letter: HTMLSpanElement) => {
+        const defAnim = async () =>
+          await animate(
+            letter,
+            { opacity: 1 },
+            {
+              duration: speed / 15,
+              ease: "circOut",
+            }
+          );
+
         const column = columns[letter.offsetTop];
-        if (!column) return;
+        if (!column) return await defAnim();
 
         const row = receiveCentralityRank(column.letters, letter.offsetLeft);
-        if (row === -1) return;
+        if (row === -1) return await defAnim();
 
         await animate(
           letter,
