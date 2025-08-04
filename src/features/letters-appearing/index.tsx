@@ -82,8 +82,8 @@ export const useLettersAppearing = (
             letter,
             { opacity: 1 },
             {
-              duration: speed / 15,
-              ease: "circOut",
+              duration: 1,
+              ease: "backOut",
             }
           );
 
