@@ -1,6 +1,19 @@
 .wrap {
+  --gap-desktop: 20px;
+  --gap-tablet: 10px;
+
   display: flex;
-  gap: 20px;
   padding-right: 20px;
   margin-top: 30px;
+
+  @include globals.useMedia("gap");
+
+  img {
+    max-width: 40vw;
+    height: auto;
+
+    &:last-child {
+      max-width: 35vw;
+    }
+  }
 }

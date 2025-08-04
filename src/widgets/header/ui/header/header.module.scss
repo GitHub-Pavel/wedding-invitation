@@ -49,19 +49,19 @@
 }
 
 .grid {
+  --grid-template-columns-desktop: 2fr 8fr 2fr;
+  --grid-template-columns-tablet: 6fr 6fr;
+
   display: grid;
   align-items: center;
-  grid-template-columns: 2fr 8fr 2fr;
+
+  @include globals.useMedia("grid-template-columns");
 }
 
 .chatForGuests {
-  --position-desktop: flex-end;
-  --position-tablet: center;
-
   display: flex;
   align-items: center;
-
-  @include globals.useMedia("justify-content", "position");
+  justify-content: flex-end;
 }
 
 .logo {
