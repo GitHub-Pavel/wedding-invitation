@@ -22,6 +22,9 @@ const cgItalic = Cormorant_Garamond({
 export const metadata: Metadata = {
   title: "Руслан и Алина",
   description: "Приглашение на свадьбу",
+  openGraph: {
+    images: "/preview.jpg",
+  },
 };
 
 export default function RootLayout({
