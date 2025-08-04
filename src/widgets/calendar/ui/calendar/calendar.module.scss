@@ -1,14 +1,25 @@
 .calendar {
-  margin-top: 40px;
+  --padding-desktop: 60px 80px 100px;
+  --padding-tablet: 30px 20px 40px;
+
+  --margin-top-desktop: 40px;
+  --margin-top-tablet: 0px;
+
   position: relative;
-  padding: 60px 80px 100px;
+
+  @include globals.useMedia("padding");
+  @include globals.useMedia("margin-top");
 }
 
 .daysWrap {
-  padding: 55px 20px 0;
+  --padding-destop: 55px 20px 0;
+  --padding-tablet: 20px 5px 0;
+
   justify-content: space-between;
   display: flex;
   align-items: flex-start;
+
+  @include globals.useMedia("padding");
 }
 
 .section {

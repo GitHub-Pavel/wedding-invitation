@@ -6,9 +6,15 @@
 }
 
 .wrap {
-  gap: 50px;
+  --gap-desktop: 50px;
+  --gap-tablet: 20px;
+
+  @include globals.useMedia("gap");
 }
 
 .days {
-  gap: 40px;
+  --gap-desktop: 40px;
+  --gap-tablet: 15px;
+
+  @include globals.useMedia("gap");
 }

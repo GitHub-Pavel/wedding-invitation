@@ -3,10 +3,16 @@
 }
 
 .heart {
-  width: 60px;
+  --width-desktop: 60px;
+  --width-tablet: 40px;
+  --top-desktop: calc(50% + 9px);
+  --top-tablet: calc(50% + 5px);
+
   position: absolute;
-  top: calc(50% + 9px);
   left: 50%;
   z-index: -1;
   translate: -50% -50%;
+
+  @include globals.useMedia("width");
+  @include globals.useMedia("top");
 }

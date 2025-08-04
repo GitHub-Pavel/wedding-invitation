@@ -12,6 +12,8 @@
   bottom: -8vh;
   height: 100vh;
   translate: -50% 0;
+  max-width: 100vw;
+  object-fit: cover;
   opacity: 0;
   pointer-events: none;
 }

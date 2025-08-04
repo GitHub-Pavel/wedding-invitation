@@ -4,6 +4,7 @@ import { Color } from "@/shared/const/styles";
 import styles from "./styles.module.scss";
 import { useDay } from "../../model";
 import clsx from "clsx";
+import { useIsMobile } from "@/entities/mobile";
 
 interface DayProps {
   day: number;
@@ -12,8 +13,9 @@ interface DayProps {
 }
 
 export const Day: FC<DayProps> = ({ day, currentDay, parent }) => {
+  const isMobile = useIsMobile();
   const { scopes } = useDay(parent, day);
-  const headingVariant = HeadingVariant.h3;
+  const headingVariant = isMobile ? HeadingVariant.h4 : HeadingVariant.h3;
 
   return (
     <div className={styles.day}>

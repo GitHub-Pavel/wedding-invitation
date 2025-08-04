@@ -5,6 +5,7 @@ import { Heading, HeadingVariant } from "@/shared/ui/heading";
 import { useDaysLabel } from "../../model";
 import { Day } from "../day";
 import styles from "./dates.module.scss";
+import { useIsMobile } from "@/entities/mobile";
 
 export interface DaysParams {
   label: string;
@@ -17,8 +18,9 @@ interface DatesProps extends DaysParams {
 }
 
 export const Dates: FC<DatesProps> = ({ days, label, currentDay, parent }) => {
-  const headingVariant = HeadingVariant.h3;
+  const isMobile = useIsMobile();
   const { scopes } = useDaysLabel(parent);
+  const headingVariant = isMobile ? HeadingVariant.h4 : HeadingVariant.h3;
 
   return (
     <div className={styles.wrap}>
