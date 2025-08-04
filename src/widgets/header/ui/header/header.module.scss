@@ -50,12 +50,14 @@
 
 .grid {
   --grid-template-columns-desktop: 2fr 8fr 2fr;
-  --grid-template-columns-tablet: 6fr 6fr;
+  --grid-template-columns-tablet: 1;
+  --justify-content-tablet: center;
 
   display: grid;
   align-items: center;
 
   @include globals.useMedia("grid-template-columns");
+  @include globals.useMedia("justify-content");
 }
 
 .chatForGuests {

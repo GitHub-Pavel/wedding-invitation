@@ -8,6 +8,7 @@ import {
 import { FC } from "react";
 
 export const ChatForGuests: FC = () => {
+  return null;
   return (
     <IconButton
       enableStroke

@@ -3,16 +3,18 @@
   --font-size-tablet: 24px;
   --padding-top-desktop: 100px;
   --padding-top-tablet: 60px;
+  --gap-desktop: 50px;
+  --gap-tablet: 30px;
 
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 50px;
   text-align: center;
   font-style: italic;
 
   @include globals.useMedia("font-size");
   @include globals.useMedia("padding-top");
+  @include globals.useMedia("gap");
 }
 
 .section {
@@ -37,6 +39,8 @@
     left: 130px;
     height: 40vw;
     width: 40vw;
+    max-width: 550px;
+    max-height: 550px;
   }
 
   &.c2 {
