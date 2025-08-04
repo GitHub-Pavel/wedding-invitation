@@ -55,9 +55,13 @@
 }
 
 .chatForGuests {
+  --position-desktop: flex-end;
+  --position-tablet: center;
+
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+
+  @include globals.useMedia("justify-content", "position");
 }
 
 .logo {

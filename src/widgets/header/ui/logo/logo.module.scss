@@ -1,7 +1,11 @@
 .logo {
+  --width-desktop: 40px;
+  --width-tablet: 30px;
+
   color: var(--color-main);
   transition: 0.3s 0.2s;
-  width: 40px;
+
+  @include globals.useMedia("width");
 
   svg {
     fill: currentColor;
