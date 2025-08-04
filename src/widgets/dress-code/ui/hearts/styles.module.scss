@@ -1,9 +1,14 @@
 .hearts {
+  --grid-template-columns-desktop: repeat(6, 1fr);
+  --grid-template-columns-tablet: repeat(3, 1fr);
+
   gap: 20px;
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+
+  @include globals.useMedia("grid-template-columns");
 }
 
 .img {
   max-width: 100%;
+  height: auto;
 }

@@ -8,4 +8,5 @@ export enum HeadingVariant {
 export enum HeadingAlign {
   center = "center",
   left = "left",
+  right = "right",
 }

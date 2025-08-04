@@ -3,22 +3,27 @@
 }
 
 .top {
+  --padding-left-desktop: 100px;
+  --padding-left-tablet: 0px;
+
   padding-bottom: 30px;
-  padding-left: 100px;
-  color: var(--color-dirty);
-  font-size: 30px;
+
+  @include globals.useMedia("padding-left");
 }
 
 .script {
   --font-size-desktop: 2.4rem;
   --font-size-tablet: 2rem;
+  --text-align-tablet: center;
+
+  @include globals.useMedia("text-align");
 }
 
 .bot {
-  font-size: 30px;
-  padding-top: 60px;
-  text-align: end;
-  font-style: italic;
-  color: var(--color-dirty);
+  --padding-top-desktop: 60px;
+  --padding-top-tablet: 50px;
+
   text-decoration: underline;
+
+  @include globals.useMedia("padding-top");
 }

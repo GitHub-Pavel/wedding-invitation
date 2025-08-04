@@ -35,6 +35,15 @@
   }
 }
 
+.right {
+  align-items: flex-end;
+  text-align: right;
+
+  .wrap {
+    align-items: flex-end;
+  }
+}
+
 .heading {
   font-weight: 400;
   font-family: var(--font-cg);

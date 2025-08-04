@@ -1,8 +1,9 @@
 .wrap {
   --font-size-desktop: 40px;
   --font-size-tablet: 24px;
+  --padding-top-desktop: 100px;
+  --padding-top-tablet: 60px;
 
-  padding-top: 100px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,6 +12,7 @@
   font-style: italic;
 
   @include globals.useMedia("font-size");
+  @include globals.useMedia("padding-top");
 }
 
 .section {
@@ -21,9 +23,14 @@
 }
 
 .circle {
+  --opacity-desktop: 1;
+  --opacity-tablet: 0;
+
   background-color: var(--color-dirty);
   position: absolute;
   border-radius: 50%;
+
+  @include globals.useMedia("opacity");
 
   &.c1 {
     top: 140px;
